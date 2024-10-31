@@ -1,15 +1,4 @@
 <template>
-  <!-- <div class="music-list">
-
-    <h1 class="title">{{ title }}</h1>
-    <div class="bg-image" ref="bgImage" :style="bgImageStyle">
-      <div class="play-btn-wrapper">
-
-      </div>
-      <div class="filter"></div>
-    </div>
-    <div class="song-list-wrapper"></div>
-  </div> -->
   <div class="all">
     <div class="menu">
       <div class="title">{{ title }}</div>

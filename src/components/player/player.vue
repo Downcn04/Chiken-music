@@ -122,7 +122,8 @@ const {
   onMiddletouchMove,
   onMiddletouchEnd,
 } = useMiddleinteractive();
-const { sliderWrapperRef } = useMiniSlider();
+// const audioRef = ref();
+const { sliderWrapperRef, audioRef } = useMiniSlider();
 const { cdCls, cdRef, cdImageRef } = useCd();
 const { modeIcon, changeMode } = useMode();
 const { getfavoriteIcon, toggleFavorite } = useFavorite();
@@ -151,7 +152,7 @@ const goback = () => {
   useStore.miniFullScreen = true;
   useStore.fullScreen = false;
 };
-const audioRef = ref();
+
 // const useStore = useCounterStore();
 const useStore = useSingerStore();
 const fullScreen = computed(() => useStore.fullScreen);

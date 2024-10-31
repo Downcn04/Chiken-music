@@ -12,6 +12,7 @@ import { useSingerStore } from '@/store';
 BScroll.use(Slide);
 export default function useMiniSlider() {
   const singerStore = useSingerStore();
+  const audioRef = ref();
   const playList = computed(() => singerStore.singerDetail);
   const miniFullScreen = computed(() => singerStore.miniFullScreen);
   const sliderWrapperRef = ref();
@@ -27,8 +28,6 @@ export default function useMiniSlider() {
         await nextTick();
         // 添加检查确保 DOM 元素存在
         if (sliderWrapperRef.value && sliderWrapperRef.value.children) {
-          // 如果已存在实例，先销毁
-
           slider.value = new BScroll(sliderWrapperRef.value, {
             click: true,
             scrollX: true,
@@ -46,14 +45,17 @@ export default function useMiniSlider() {
             singerStore.currentSong = playList.value[pageX];
           });
           // 这里要设置计算属性
-
+          // 组件Bug
           slider.value.goToPage(currentIndex.value, 0, 0);
         }
       } else {
         // 当 fullshow 为 false 时，清理实例
         if (slider.value) {
-          console.log(11111);
-          slider.value.goToPage(currentIndex.value, 0, 0);
+          // console.log(11111);
+          // audioRef.pause();
+          // console.log(audioRef);
+          const sliderPage = computed(() => currentIndex.value);
+          slider.value.goToPage(sliderPage.value, 0, 0);
           slider.value.destroy();
           // slider.value = null;
         }
@@ -68,5 +70,6 @@ export default function useMiniSlider() {
   });
   return {
     sliderWrapperRef,
+    audioRef,
   };
 }

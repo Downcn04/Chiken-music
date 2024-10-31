@@ -6,6 +6,7 @@ import '@/assets/scss/index.scss';
 // import lazyPlugin from 'vue3-lazy';
 import { loadingDirective } from './components/base/loading/directive';
 import { lazyLoad } from './components/base/lazyload/directive';
+import { noresultDirective } from './components/base/noresult/directive';
 const app = createApp(App);
 const pinia = createPinia();
 app
@@ -13,4 +14,5 @@ app
   .use(pinia)
   .directive('loading', loadingDirective)
   .directive('lazy', lazyLoad)
+  .directive('noresult', noresultDirective)
   .mount('#app');

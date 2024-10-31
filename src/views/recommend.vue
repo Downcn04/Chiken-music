@@ -38,6 +38,7 @@
 <script setup>
 import { getRecommend } from '@/service/recommend';
 import { computed, onMounted, ref } from 'vue';
+import { getAlbum } from '@/service/album';
 import slider from '@/components/base/slider/slider.vue';
 const sliders = ref([]);
 const albums = ref([]);
@@ -51,6 +52,10 @@ onMounted(async () => {
   sliders.value = result.sliders;
   albums.value = result.albums;
 });
+const selectItem = async (item) => {
+  const result = await getAlbum(item);
+  console.log(result);
+};
 // const loading = computed(() => {
 //   return sliders.value.length;
 // });
